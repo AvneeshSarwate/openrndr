@@ -17,6 +17,10 @@ plugins {
     id "org.jetbrains.dokka" version "1.5.30" apply false
 }
 
+rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin) {
+    rootProject.kotlinNodeJs.nodeVersion = "16.0.0"
+}
+
 /*
     Disable `dokkaHtmlMultiModule` task on Windows because of this error:
     No signature of method: org.jetbrains.dokka.gradle.GradleDokkaSourceSetBuilder.set() is applicable for argument types: (Boolean) values: [true]
@@ -130,6 +134,7 @@ allprojects {
     group 'org.openrndr'
     repositories {
         mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 
